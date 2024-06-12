@@ -1,0 +1,40 @@
+### WordPress Template
+*.log
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/wp-cache-config.php
+wp-content/plugins/hello.php
+
+# Caching Plugins
+wp-content/advanced-cache.php
+wp-content/wp-rocket-config/*
+wp-content/cache/*
+wp-content/db.php
+wp-content/object-cache.php
+wp-content/w3tc-config/*
+
+# Backup Plugin
+wp-content/updraft/*
+
+# Wordfence
+wp-content/wflogs/*
+wp-content/wfcache/*
+wp-content/plugins/wordfence/tmp/*
+wordfence-waf.php
+
+# System
+
+/.htaccess
+/license.txt
+/readme.html
+/sitemap.xml
+/sitemap.xml.gz
+
+.DS_Store
+wp-content/plugins/.DS_Store
