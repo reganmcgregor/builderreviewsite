@@ -15,7 +15,6 @@ function wp_realestate_wc_paid_listings_register_package_product_type() {
 	class WP_RealEstate_Wc_Paid_Listings_Product_Type_Package extends WC_Product_Simple {
 		
 		public function __construct( $product ) {
-			$this->product_type = 'property_package';
 			parent::__construct( $product );
 		}
 
@@ -40,7 +39,6 @@ function wp_realestate_wc_paid_listings_register_package_product_type() {
 		class WP_RealEstate_Wc_Paid_Listings_Product_Type_Package_Subscription extends WC_Product_Subscription {
 		
 			public function __construct( $product ) {
-				$this->product_type = 'property_package_subscription';
 				parent::__construct( $product );
 			}
 
