@@ -179,6 +179,28 @@ class WP_RealEstate_Submit_Form extends WP_RealEstate_Abstract_Form {
 					}
 				}
 
+				// Facades (Plugin Override)
+				if ( !empty($post_datas[$prefix.'facades_group']) ) {
+					$facades_group = $post_datas[$prefix.'facades_group'];
+					if ( isset($post_datas['current_'.$prefix.'facades_group']) ) {
+						foreach ($post_datas['current_'.$prefix.'facades_group'] as $gkey => $ar_value) {
+							foreach ($ar_value as $ikey => $value) {
+								if ( is_numeric($value) ) {
+									$url = wp_get_attachment_url( $value );
+									$facades_group[$gkey][$ikey.'_id'] = $value;
+									$facades_group[$gkey][$ikey] = $url;
+								} elseif ( ! empty( $value ) ) {
+									$attach_id = WP_RealEstate_Image::create_attachment( $value, $post_id );
+									$url = wp_get_attachment_url( $attach_id );
+									$facades_group[$gkey][$ikey.'_id'] = $attach_id;
+									$facades_group[$gkey][$ikey] = $url;
+								}
+							}
+						}
+						update_post_meta( $post_id, $prefix.'facades_group', $facades_group );
+					}
+				}
+
 				do_action( 'wp-realestate-process-submission-after-save', $post_id );
 
 				if ( $new_post ) {

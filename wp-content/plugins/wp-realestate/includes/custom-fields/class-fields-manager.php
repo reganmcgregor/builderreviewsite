@@ -123,7 +123,7 @@ class WP_RealEstate_Fields_Manager {
                                         $count_node ++;
                                         $field_values = wp_parse_args( $custom_field_saved_data, $dvfield_values);
 
-                                        $dtypes = apply_filters( 'wp_realestate_list_simple_type', array( $prefix.'featured', $prefix.'year_built', $prefix.'property_id', $prefix.'address', $prefix.'map_location', $prefix.'price', $prefix.'price_prefix', $prefix.'price_suffix', $prefix.'price_custom', $prefix.'rooms', $prefix.'beds', $prefix.'baths', $prefix.'garages', $prefix.'home_area', $prefix.'lot_dimensions', $prefix.'lot_area', $prefix.'video', $prefix.'virtual_tour', $prefix.'parent_property', $prefix.'valuation_group', $prefix.'public_facilities_group', $prefix.'floor_plans_group', $prefix.'location', $prefix.'energy_class', $prefix.'energy_index' ) );
+                                        $dtypes = apply_filters( 'wp_realestate_list_simple_type', array( $prefix.'featured', $prefix.'year_built', $prefix.'property_id', $prefix.'address', $prefix.'map_location', $prefix.'price', $prefix.'price_prefix', $prefix.'price_suffix', $prefix.'price_custom', $prefix.'rooms', $prefix.'beds', $prefix.'baths', $prefix.'garages', $prefix.'home_area', $prefix.'lot_dimensions', $prefix.'lot_area', $prefix.'video', $prefix.'virtual_tour', $prefix.'parent_property', $prefix.'valuation_group', $prefix.'public_facilities_group', $prefix.'floor_plans_group', $prefix.'facades_group', $prefix.'location', $prefix.'energy_class', $prefix.'energy_index' ) );
 
                                         if ( in_array( $fieldtype, $dtypes) ) {
                                             $output .= apply_filters('wp_realestate_custom_field_available_simple_html', $fieldtype, $count_node, $field_values);
@@ -595,6 +595,61 @@ class WP_RealEstate_Fields_Manager {
                 ),
             ),
 
+            // Facades (Plugin Override)
+            array(
+                'name'              => __( 'Facades', 'wp-realestate' ),
+                'id'                => $prefix . 'facades_group',
+                'type'              => 'group',
+                'options'           => array(
+                    'group_title'       => __( 'Facade {#}', 'wp-realestate' ),
+                    'add_button'        => __( 'Add Facade', 'wp-realestate' ),
+                    'remove_button'     => __( 'Remove Facade', 'wp-realestate' ),
+                    'sortable'          => true,
+                    'closed'         => true,
+                ),
+                'fields'            => array(
+                    array(
+                        'id'                => 'name',
+                        'name'              => __( 'Name', 'wp-realestate' ),
+                        'type'              => 'text',
+                    ),
+                    // price
+                    array(
+                        'name'              => sprintf(__( 'Price (%s)', 'wp-realestate' ), $currency_symbol),
+                        'id'                => 'price',
+                        'type'              => 'text',
+                        'placeholder'       => __( 'e.g. 1000', 'wp-realestate' ),
+                        'field_call_back' => array( 'WP_RealEstate_Abstract_Filter', 'filter_field_property_price'),
+                        'show_compare'      => true
+                    ),
+                    array(
+                        'name'              => __( 'Price Prefix', 'wp-realestate' ),
+                        'id'                => 'price_prefix',
+                        'type'              => 'text',
+                        'description'       => __('Any text shown before price (for example: from).', 'wp-realestate'),
+                    ),
+                    array(
+                        'name'              => __( 'Price Suffix', 'wp-realestate' ),
+                        'id'                => 'price_suffix',
+                        'type'              => 'text',
+                        'description'       => __('Any text shown after price (for example: per night).', 'wp-realestate'),
+                    ),
+                    array(
+                        'name'              => __( 'Price Custom', 'wp-realestate' ),
+                        'id'                => 'price_custom',
+                        'type'              => 'text',
+                        'description'       => __('Any text instead of price (for example: by agreement). Prefix and Suffix will be ignored.', 'wp-realestate'),
+                    ),
+                    array(
+                        'name'              => __( 'Preview Image', 'wp-realestate' ),
+                        'id'                => 'image',
+                        'type'              => 'wp_realestate_file',
+                        'ajax'              => true,
+                        'multiple_files'    => false,
+                    ),
+                ),
+            ),
+
             // Taxonomies
             array(
                 'name'              => __( 'Status', 'wp-realestate' ),
@@ -824,7 +879,7 @@ class WP_RealEstate_Fields_Manager {
         $dfield_values = self::get_field_id($fieldtype, $types);
         if ( !empty($dfield_values) ) {
 
-            $dtypes = apply_filters( 'wp_realestate_list_simple_type', array( $prefix.'featured', $prefix.'year_built', $prefix.'address', $prefix.'property_id', $prefix.'map_location', $prefix.'price', $prefix.'price_prefix', $prefix.'price_suffix', $prefix.'price_custom', $prefix.'rooms', $prefix.'beds', $prefix.'baths', $prefix.'garages', $prefix.'home_area', $prefix.'lot_dimensions', $prefix.'lot_area', $prefix.'video', $prefix.'virtual_tour', $prefix.'parent_property', $prefix.'valuation_group', $prefix.'public_facilities_group', $prefix.'floor_plans_group', $prefix.'location', $prefix.'energy_class', $prefix.'energy_index' ) );
+            $dtypes = apply_filters( 'wp_realestate_list_simple_type', array( $prefix.'featured', $prefix.'year_built', $prefix.'address', $prefix.'property_id', $prefix.'map_location', $prefix.'price', $prefix.'price_prefix', $prefix.'price_suffix', $prefix.'price_custom', $prefix.'rooms', $prefix.'beds', $prefix.'baths', $prefix.'garages', $prefix.'home_area', $prefix.'lot_dimensions', $prefix.'lot_area', $prefix.'video', $prefix.'virtual_tour', $prefix.'parent_property', $prefix.'valuation_group', $prefix.'public_facilities_group', $prefix.'floor_plans_group', $prefix.'facades_group', $prefix.'location', $prefix.'energy_class', $prefix.'energy_index' ) );
 
             if ( in_array( $fieldtype, $dtypes ) ) {
                 $html .= apply_filters( 'wp_realestate_custom_field_available_simple_html', $fieldtype, $global_custom_field_counter, $dfield_values );

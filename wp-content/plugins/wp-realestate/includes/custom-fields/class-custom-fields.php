@@ -170,7 +170,7 @@ class WP_RealEstate_Custom_Fields {
 						}
 					}
 
-					if ( !in_array($fieldkey, array( $prefix.'heading', $prefix.'featured_image', $prefix.'gallery', $prefix.'description', $prefix.'expiry_date', $prefix.'property_id', $prefix.'price_prefix', $prefix.'price_suffix', $prefix.'price_custom', $prefix.'lot_dimensions', $prefix.'video', $prefix.'virtual_tour', $prefix.'parent_property', $prefix.'floor_plans_group', $prefix.'valuation_group', $prefix.'public_facilities_group', $prefix.'map_location', $prefix.'featured_image', $prefix.'gallery', $prefix.'attachments', $prefix.'address', $prefix.'file' )) ) {
+					if ( !in_array($fieldkey, array( $prefix.'heading', $prefix.'featured_image', $prefix.'gallery', $prefix.'description', $prefix.'expiry_date', $prefix.'property_id', $prefix.'price_prefix', $prefix.'price_suffix', $prefix.'price_custom', $prefix.'lot_dimensions', $prefix.'video', $prefix.'virtual_tour', $prefix.'parent_property', $prefix.'floor_plans_group', $prefix.'facades_group', $prefix.'valuation_group', $prefix.'public_facilities_group', $prefix.'map_location', $prefix.'featured_image', $prefix.'gallery', $prefix.'attachments', $prefix.'address', $prefix.'file' )) ) {
 
 						$id = str_replace(WP_REALESTATE_PROPERTY_PREFIX, '', $field_data['id']);
 						$fields[$id] = self::render_field($field_data, $fieldkey, $fieldtype, $i, $admin_field, $fieldtype_type);
