@@ -230,7 +230,7 @@ class WP_RealEstate_Social_Google {
         $this->display_message();
         ?>
         <div class="google-login-btn-wrapper">
-            <a class="google-login-btn" href="<?php echo esc_url($this->get_login_url()); ?>"><i class="fab fa-google"></i> <?php esc_html_e('Login with Google', 'wp-realestate'); ?></a>
+            <a class="google-login-btn" href="<?php echo esc_url($this->get_login_url()); ?>"><i class="fab fa-google"></i><span><?php esc_html_e('Login with Google', 'wp-realestate'); ?></span></a>
         </div>
         <?php
         $output = ob_get_clean();

@@ -230,7 +230,7 @@ class WP_RealEstate_Social_Twitter {
         $this->display_message();
         ?>
         <div class="twitter-login-btn-wrapper">
-            <a class="twitter-login-btn" href="<?php echo esc_url($this->get_login_url()); ?>"><i class="fab fa-twitter"></i> <?php esc_html_e('Login with Twitter', 'wp-realestate'); ?></a>
+            <a class="twitter-login-btn" href="<?php echo esc_url($this->get_login_url()); ?>"><i class="fab fa-x-twitter"></i><span><?php esc_html_e('Login with Twitter', 'wp-realestate'); ?></span></a>
         </div>
         <?php
         $output = ob_get_clean();

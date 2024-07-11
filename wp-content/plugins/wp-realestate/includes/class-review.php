@@ -174,9 +174,9 @@ class WP_RealEstate_Review {
 	    }
 	    $total_review = 0;
 	    foreach ($comments as $comment) {
-	        $rating = intval( get_comment_meta( $comment->comment_ID, '_rating_avg', true ) );
+	        $rating = floatval( get_comment_meta( $comment->comment_ID, '_rating_avg', true ) );
 	        if ($rating) {
-	            $total_review += (int)$rating;
+	            $total_review += $rating;
 	        }
 	    }
 	    return round($total_review/count($comments),2);
@@ -220,9 +220,9 @@ class WP_RealEstate_Review {
 	    }
 	    $total_review = 0;
 	    foreach ($comments as $comment) {
-	        $rating = intval( get_comment_meta( $comment->comment_ID, '_rating_avg', true ) );
+	        $rating = floatval( get_comment_meta( $comment->comment_ID, '_rating_avg', true ) );
 	        if ($rating) {
-	            $total_review += (int)$rating;
+	            $total_review += $rating;
 	        }
 	    }
 	    return $total_review/count($comments);

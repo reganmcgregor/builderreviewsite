@@ -343,7 +343,7 @@ class WP_RealEstate_Social_Linkedin {
         $this->display_message();
         ?>
         <div class="linkedin-login-btn-wrapper">
-            <a class="linkedin-login-btn" href="<?php echo esc_url($this->get_login_url()); ?>"><i class="fab fa-linkedin-in"></i> <?php esc_html_e('Login with LinkedIn', 'wp-realestate'); ?></a>
+            <a class="linkedin-login-btn" href="<?php echo esc_url($this->get_login_url()); ?>"><i class="fab fa-linkedin-in"></i><span><?php esc_html_e('Login with LinkedIn', 'wp-realestate'); ?></span></a>
         </div>
         <?php
         $output = ob_get_clean();

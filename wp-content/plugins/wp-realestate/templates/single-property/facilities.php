@@ -2,7 +2,7 @@
 global $post;
 $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
 $facilities = $meta_obj->get_post_meta('public_facilities_group');
-if ( $meta_obj->check_post_meta_exist('public_facilities_group') && is_array( $facilities ) && count( $facilities[0] ) > 0 ) {
+if ( $meta_obj->check_post_meta_exist('public_facilities_group') && is_array( $facilities ) && !empty($facilities[0]) && count( $facilities[0] ) > 0 ) {
 ?>
     <div class="property-section property-public-facilities">
         <h3><?php echo esc_html__('Facilities', 'wp-realestate'); ?></h3>

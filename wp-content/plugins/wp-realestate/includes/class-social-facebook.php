@@ -281,7 +281,7 @@ class WP_RealEstate_Social_Facebook {
         $this->display_message();
     	?>
     	<div class="facebook-login-btn-wrapper">
-    		<a class="facebook-login-btn" href="<?php echo esc_url($this->get_login_url()); ?>"><i class="fab fa-facebook-f"></i> <?php esc_html_e('Login with Facebook', 'wp-realestate'); ?></a>
+    		<a class="facebook-login-btn" href="<?php echo esc_url($this->get_login_url()); ?>"><i class="fab fa-facebook-f"></i><span><?php esc_html_e('Login with Facebook', 'wp-realestate'); ?></span></a>
     	</div>
     	<?php
     	$output = ob_get_clean();

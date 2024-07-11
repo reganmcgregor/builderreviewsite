@@ -133,7 +133,7 @@ class WP_RealEstate_Mixes {
 	public static function get_socials_network() {
 		return apply_filters( 'wp-realestate-get-socials-network', array(
 			'fab fa-facebook-f' => esc_html__('Facebook', 'wp-realestate'),
-			'fab fa-twitter' => esc_html__('Twitter', 'wp-realestate'),
+			'fab fa-x-twitter' => esc_html__('Twitter', 'wp-realestate'),
 			'fab fa-linkedin-in' => esc_html__('Linkedin', 'wp-realestate'),
             'fab fa-dribbble' => esc_html__('Dribbble', 'wp-realestate'),
             'fab fa-instagram' => esc_html__('Instagram', 'wp-realestate'),
