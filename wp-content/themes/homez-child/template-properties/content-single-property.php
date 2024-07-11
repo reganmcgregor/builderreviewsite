@@ -31,6 +31,12 @@ wp_enqueue_script( 'sticky-kit' );
 						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/overview' );
 					}
 					?>
+					
+					<?php
+					if (has_term(array('house-designs', 'knockdown-rebuild'), 'property_type')) {
+						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/facades' );
+					}
+					?>
 
 					<?php
 					if ( homez_get_config('show_property_description', true) ) {
@@ -78,10 +84,6 @@ wp_enqueue_script( 'sticky-kit' );
 					if ( homez_get_config('show_property_floor-plans', true) ) {
 						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/floor-plans' );
 					}
-					?>
-
-					<?php
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/facades' );
 					?>
 					
 					<?php
