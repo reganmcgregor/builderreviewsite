@@ -19,7 +19,7 @@ if ( !homez_get_config('show_property_social_share', true) ) {
 		<?php endif; ?>
 		<?php if ( homez_get_config('twitter_share', 1) ): ?>
  			<a class="bo-social-twitter" data-toggle="tooltip" data-original-title="Twitter" href="https://twitter.com/intent/tweet?url=<?php the_permalink(); ?>" target="_blank" title="<?php echo esc_html__('Share on Twitter', 'homez'); ?>">
-				<i class="fab fa-twitter"></i>
+				<i class="fab fa-x-twitter"></i>
 			</a>
 		<?php endif; ?>
 		<?php if ( homez_get_config('linkedin_share', 1) ): ?>
