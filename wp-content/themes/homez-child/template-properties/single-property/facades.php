@@ -8,9 +8,9 @@ global $post;
 $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
 if ($meta_obj->check_post_meta_exist('facades_group') && ($facades = $meta_obj->get_post_meta('facades_group'))) {
 ?>
-    <h3 class="title">
-        <?php esc_html_e('Facades', 'homez'); ?>
-    </h3>
+    <!-- <h3 class="title">
+        <?php // esc_html_e('Facades', 'homez'); ?>
+    </h3> -->
     <style type="text/css">
         .slick-carousel .slick-dots {
             padding: 0;
@@ -25,7 +25,7 @@ if ($meta_obj->check_post_meta_exist('facades_group') && ($facades = $meta_obj->
                         <div class="image-thumbnail">
                             <a class="property-image" href="<?php echo esc_url($facade['image']); ?>" data-elementor-lightbox-slideshow="facade-gallery-image" data-elementor-lightbox-title="<?php echo trim($facade['name']); ?> Facade" tabindex="-1">
                                 <div class="image-wrapper">
-                                    <?php echo wp_get_attachment_image($facade['image_id'], [800, 450], true); ?>
+                                    <?php echo wp_get_attachment_image($facade['image_id'], [800, 450], true , array( "alt" => trim($facade['name'])." Facacde" )); ?>
                                 </div>
                             </a>
                         </div>
@@ -37,15 +37,7 @@ if ($meta_obj->check_post_meta_exist('facades_group') && ($facades = $meta_obj->
                             </div>
                         <?php } elseif (!empty($facade['price'])) { ?>
                             <div class="property-price">
-                                <?php if (!empty($facade['price_prefix'])) { ?>
-                                    <span class="prefix-text additional-text"><?php echo ($facade['price_prefix']); ?></span>
-                                <?php } ?>
-                                <?php if (!empty($facade['price'])) { ?>
-                                    <span class="suffix">$</span><span class="price-text"><?php echo ($facade['price']); ?></span>
-                                <?php } ?>
-                                <?php if (!empty($facade['price_suffix'])) { ?>
-                                    <span class="suffix-text additional-text"><?php echo ($facade['price_suffix']); ?></span>
-                                <?php } ?>
+                                <?php if (!empty($facade['price_prefix'])) { ?> <span class="prefix-text additional-text"><?php echo ($facade['price_prefix']); ?></span><?php } ?><?php if (!empty($facade['price'])) { ?><?php echo WP_RealEstate_Price::format_price($facade['price']); ?><?php } ?><?php if (!empty($facade['price_suffix'])) { ?><span class="suffix-text additional-text"><?php echo ($facade['price_suffix']); ?></span><?php } ?>
                             </div>
                         <?php } ?>
                     </div>
