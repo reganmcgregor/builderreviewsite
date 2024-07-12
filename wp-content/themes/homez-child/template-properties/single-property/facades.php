@@ -8,7 +8,6 @@ global $post;
 $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
 if ($meta_obj->check_post_meta_exist('facades_group') && ($facades = $meta_obj->get_post_meta('facades_group'))) {
 ?>
-
     <h3 class="title">
         <?php esc_html_e('Facades', 'homez'); ?>
     </h3>
@@ -24,7 +23,7 @@ if ($meta_obj->check_post_meta_exist('facades_group') && ($facades = $meta_obj->
                 <div class="property-thumbnail-wrapper">
                     <?php if (!empty($facade['image_id'])) { ?>
                         <div class="image-thumbnail">
-                            <a class="property-image" href="<?php echo esc_url($facade['image']); ?>" tabindex="-1">
+                            <a class="property-image" href="<?php echo esc_url($facade['image']); ?>" data-elementor-lightbox-slideshow="facade-gallery-image" data-elementor-lightbox-title="<?php echo trim($facade['name']); ?> Facade" tabindex="-1">
                                 <div class="image-wrapper">
                                     <?php echo wp_get_attachment_image($facade['image_id'], [800, 450], true); ?>
                                 </div>
@@ -51,14 +50,14 @@ if ($meta_obj->check_post_meta_exist('facades_group') && ($facades = $meta_obj->
                         <?php } ?>
                     </div>
                     <div class="action-item d-flex align-items-center">
-                        <a href="<?php echo esc_url($facade['image']); ?>" class="btn-permalink" data-toggle="tooltip" data-original-title="View" data-bs-original-title="" title="" tabindex="0"><i class="flaticon-fullscreen"></i></a>
+                        <a href="<?php echo esc_url($facade['image']); ?>" class="btn-permalink" data-elementor-lightbox-slideshow="facade-gallery" data-toggle="tooltip" data-original-title="View Facade" title="View All Facades" data-elementor-lightbox-title="<?php echo trim($facade['name']); ?> Facade" tabindex="0"><i class="ti-fullscreen"></i></a>
                     </div>
                 </div>
                 <div class="top-info" style="padding: 20px;">
                     <div class="property-information">
                         <?php if (!empty($facade['name'])) { ?>
                                 <h4 class="property-title">
-                                    <a href="<?php echo esc_url($facade['image']); ?>" rel="bookmark">
+                                    <a href="<?php echo esc_url($facade['image']); ?>" data-elementor-lightbox-slideshow="facade-gallery-title" data-elementor-lightbox-title="<?php echo trim($facade['name']); ?> Facade" rel="bookmark">
                                         <?php echo trim($facade['name']); ?> Facade
                                     </a>
                                 </h4>
