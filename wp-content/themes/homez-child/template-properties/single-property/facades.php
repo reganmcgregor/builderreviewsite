@@ -10,7 +10,7 @@ if ($meta_obj->check_post_meta_exist('facades_group') && ($facades = $meta_obj->
 ?>
 
     <h3 class="title">
-        <?php esc_html_e('Our Ludstone Façade emphasis modern suburban living. This design features ample dimensions through strong perpendicular lines and curtain wall 'like' windows that optimise natural light on the upper floor', 'homez'); ?>
+        <?php esc_html_e('Facades', 'homez'); ?>
     </h3>
     <style type="text/css">
         .slick-carousel .slick-dots {
