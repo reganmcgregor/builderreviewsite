@@ -34,3 +34,46 @@ function homez_property_display_type_label($post, $echo = true, $color = true) {
         return $output;
     }
 }
+
+function homez_property_display_author_name($post, $prefix, $echo = true) {
+	$author_id = $post->post_author;
+	ob_start();
+	if ( $author_id ) {
+		$author_url = '';
+		if ( WP_RealEstate_User::is_agent($author_id) ) {
+		    $agent_id = WP_RealEstate_User::get_agent_by_user_id($author_id);
+		    $title = get_the_title($agent_id);
+		    $author_url = get_permalink($agent_id);
+		} elseif ( WP_RealEstate_User::is_agency($author_id) ) {
+		    $agency_id = WP_RealEstate_User::get_agency_by_user_id($author_id);
+		    $title = get_the_title($agency_id);
+		    $author_url = get_permalink($agency_id);
+		} else {
+			$user_info = get_userdata($author_id);
+
+		    $title = $user_info->display_name;
+		}
+		?>
+        <div class="name-author">
+            <?php if ($prefix) { ?>
+                <?php echo esc_html($prefix);?>
+            <?php  }?>
+            <?php if ( $author_url ) { ?>
+                <a href="<?php echo esc_url($author_url); ?>">
+            <?php } ?>
+                <?php echo trim($title); ?>
+            <?php if ( $author_url ) { ?>
+                </a>
+            <?php } ?>
+        </div>
+
+
+	    <?php
+	}
+	$output = ob_get_clean();
+    if ( $echo ) {
+    	echo trim($output);
+    } else {
+    	return $output;
+    }
+}

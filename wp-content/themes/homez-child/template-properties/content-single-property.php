@@ -1,189 +1,189 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 global $post;
 
-wp_enqueue_script( 'sticky-kit' );
+wp_enqueue_script('sticky-kit');
 ?>
 
-<?php do_action( 'wp_realestate_before_property_detail', $post->ID ); ?>
+<?php do_action('wp_realestate_before_property_detail', $post->ID); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('property-single-layout property-single-v1'); ?>>
-	
-	<div class="<?php echo apply_filters('homez_property_content_class', 'container');?>">
-		
-		<!-- Content header -->
-		<?php echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/header' ); ?>
 
-		<?php echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/gallery' ); ?>
+	<div class="<?php echo apply_filters('homez_property_content_class', 'container'); ?>">
+
+		<!-- Content header -->
+		<?php echo WP_RealEstate_Template_Loader::get_template_part('single-property/header'); ?>
+
+		<?php echo WP_RealEstate_Template_Loader::get_template_part('single-property/gallery'); ?>
 
 		<!-- Main content -->
 		<div class="content-property-detail">
 
 			<div class="row property-v-wrapper">
-				<div class="col-12 property-detail-main col-lg-<?php echo esc_attr( is_active_sidebar( 'property-single-sidebar' ) ? 8 : 12); ?>">
+				<div class="col-12 property-detail-main col-lg-<?php echo esc_attr(is_active_sidebar('property-single-sidebar') ? 8 : 12); ?>">
 
-					<?php do_action( 'wp_realestate_before_property_content', $post->ID ); ?>
+					<?php do_action('wp_realestate_before_property_content', $post->ID); ?>
 
 					<?php
-					if ( homez_get_config('show_property_overview', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/overview' );
+					if (homez_get_config('show_property_overview', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/overview');
 					}
 					?>
-					
+
 					<?php
 					if (has_term(array('house-designs', 'knockdown-rebuild'), 'property_type')) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/facades' );
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/facades');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_description', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/description' );
+					if (homez_get_config('show_property_description', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/description');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_detail', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/detail' );
+					if (homez_get_config('show_property_detail', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/detail');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_attachments', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/attachments' );
+					if (homez_get_config('show_property_attachments', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/attachments');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_location', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/location' );
+					if (homez_get_config('show_property_location', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/location');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_amenities', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/amenities' );
+					if (homez_get_config('show_property_amenities', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/amenities');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_materials', false) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/materials' );
+					if (homez_get_config('show_property_materials', false)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/materials');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_energy', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/energy' );
+					if (homez_get_config('show_property_energy', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/energy');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_floor-plans', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/floor-plans' );
-					}
-					?>
-					
-					<?php
-					if ( homez_get_config('show_property_video', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/video' );
+					if (homez_get_config('show_property_floor-plans', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/floor-plans');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_virtual', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/virtual' );
-					}
-					?>
-
-					
-
-					<?php
-					if ( homez_get_config('show_property_mortgage-calculator', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/mortgage-calculator' );
+					if (homez_get_config('show_property_video', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/video');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_stats_graph', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/stats_graph' );
+					if (homez_get_config('show_property_virtual', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/virtual');
 					}
 					?>
-					
+
+
+
 					<?php
-					if ( homez_get_config('show_property_facilities', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/facilities' );
+					if (homez_get_config('show_property_mortgage-calculator', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/mortgage-calculator');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_valuation', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/valuation' );
-					}
-					?>
-					
-					
-					<?php
-					if ( homez_get_config('show_property_nearby_yelp', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/nearby_yelp' );
+					if (homez_get_config('show_property_stats_graph', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/stats_graph');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_walk_score', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/walk_score' );
+					if (homez_get_config('show_property_facilities', true) && !has_term(array('house-designs', 'knockdown-rebuild'), 'property_type')) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/facilities');
 					}
 					?>
 
 					<?php
-					if ( homez_get_config('show_property_google_places', true) ) {
-						echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/google-places' );
+					if (homez_get_config('show_property_valuation', true)) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/valuation');
 					}
 					?>
-					
+
+
 					<?php
-					if ( homez_get_config('show_property_schedule-tour', true) ) {
+					if (homez_get_config('show_property_nearby_yelp', true) && !has_term(array('house-designs', 'knockdown-rebuild'), 'property_type')) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/nearby_yelp');
+					}
+					?>
+
+					<?php
+					if (homez_get_config('show_property_walk_score', true) && !has_term(array('house-designs', 'knockdown-rebuild'), 'property_type')) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/walk_score');
+					}
+					?>
+
+					<?php
+					if (homez_get_config('show_property_google_places', true) && !has_term(array('house-designs', 'knockdown-rebuild'), 'property_type')) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/google-places');
+					}
+					?>
+
+					<?php
+					if (homez_get_config('show_property_schedule-tour', true)) {
 						//echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/schedule-tour' );
 					}
 					?>
 
-					<?php if ( is_active_sidebar( 'property-single-sidebar' ) ): ?>
+					<?php if (is_active_sidebar('property-single-sidebar')) : ?>
 						<div class="sidebar-mobile d-block d-lg-none">
-						   	<?php dynamic_sidebar( 'property-single-sidebar' ); ?>
-					   	</div>
-				   	<?php endif; ?>
+							<?php dynamic_sidebar('property-single-sidebar'); ?>
+						</div>
+					<?php endif; ?>
 
-					<?php if ( WP_RealEstate_Review::review_enable() ) { ?>
-							<?php comments_template(); ?>
+					<?php if (WP_RealEstate_Review::review_enable()) { ?>
+						<?php comments_template(); ?>
 					<?php } ?>
 
 
-					<?php do_action( 'wp_realestate_after_property_content', $post->ID ); ?>
+					<?php do_action('wp_realestate_after_property_content', $post->ID); ?>
 				</div>
-				
-				<?php if ( is_active_sidebar( 'property-single-sidebar' ) ): ?>
+
+				<?php if (is_active_sidebar('property-single-sidebar')) : ?>
 					<div class="col-12 col-lg-4 sidebar-wrapper d-none d-lg-block">
-				   		<div class="sidebar sidebar-right sticky-top sidebar-property">
-					   		<?php dynamic_sidebar( 'property-single-sidebar' ); ?>
-				   		</div>
-				   	</div>
-			   	<?php endif; ?>
+						<div class="sidebar sidebar-right sticky-top sidebar-property">
+							<?php dynamic_sidebar('property-single-sidebar'); ?>
+						</div>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
 	<?php
-	if ( homez_get_config('show_property_related', true) ) {
-		echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/related' );
+	if (homez_get_config('show_property_related', true)) {
+		echo WP_RealEstate_Template_Loader::get_template_part('single-property/related');
 	}
 	?>
 
 	<?php
-	if ( homez_get_config('show_property_subproperties', true) ) {
-		echo WP_RealEstate_Template_Loader::get_template_part( 'single-property/subproperties' );
+	if (homez_get_config('show_property_subproperties', true)) {
+		echo WP_RealEstate_Template_Loader::get_template_part('single-property/subproperties');
 	}
 	?>
 </article><!-- #post-## -->
 
-<?php do_action( 'wp_realestate_after_property_detail', $post->ID ); ?>
+<?php do_action('wp_realestate_after_property_detail', $post->ID); ?>
