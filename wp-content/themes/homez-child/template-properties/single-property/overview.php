@@ -7,10 +7,10 @@ global $post;
 $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
 ?>
 <div class="property-detail-detail">
-    <h3 class="title"><?php esc_html_e('Details', 'homez'); ?></h3>
+    <h3 class="title"><?php esc_html_e('Key Details', 'homez'); ?></h3>
     <ul class="list list-overview d-flex flex-wrap">
        
-        <?php if ( $meta_obj->check_post_meta_exist('beds') && ($beds = $meta_obj->get_post_meta('beds')) ) { ?>
+        <?php if ( $meta_obj->check_post_meta_exist('beds') && ($beds = $meta_obj->get_post_meta('beds')) && has_term(array('house-designs', 'knockdown-rebuild', 'house-and-land'), 'property_type')) { ?>
             <li class="d-flex align-items-center">
                 <div class="icon flex-shrink-0 d-flex align-items-center justify-content-center">
                     <i class="flaticon-bed"></i>
@@ -21,7 +21,7 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
                 </div>
             </li>
         <?php } ?>
-        <?php if ( $meta_obj->check_post_meta_exist('baths') && ($baths = $meta_obj->get_post_meta('baths')) ) { ?>
+        <?php if ( $meta_obj->check_post_meta_exist('baths') && ($baths = $meta_obj->get_post_meta('baths')) && has_term(array('house-designs', 'knockdown-rebuild', 'house-and-land'), 'property_type')) { ?>
             <li class="d-flex align-items-center">
                 <div class="icon flex-shrink-0 d-flex align-items-center justify-content-center">
                     <i class="flaticon-shower"></i>
@@ -32,7 +32,7 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
                 </div>
             </li>
         <?php } ?>
-        <?php if ( $meta_obj->check_post_meta_exist('year_built') && ($year_built = $meta_obj->get_post_meta('year_built')) ) { ?>
+        <?php if ( $meta_obj->check_post_meta_exist('year_built') && ($year_built = $meta_obj->get_post_meta('year_built')) && has_term(array('house-and-land'), 'property_type')) { ?>
             <li class="d-flex align-items-center">
                 <div class="icon flex-shrink-0 d-flex align-items-center justify-content-center">
                     <i class="flaticon-event"></i>
@@ -43,7 +43,7 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
                 </div>
             </li>
         <?php } ?>
-        <?php if ( $meta_obj->check_post_meta_exist('garages') && ($garages = $meta_obj->get_post_meta('garages')) ) { ?>
+        <?php if ( $meta_obj->check_post_meta_exist('garages') && ($garages = $meta_obj->get_post_meta('garages')) && has_term(array('land', 'house-and-land'), 'property_type')) { ?>
             <li class="d-flex align-items-center">
                 <div class="icon flex-shrink-0 d-flex align-items-center justify-content-center">
                     <i class="flaticon-garage"></i>
@@ -65,7 +65,7 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
                 </div>
             </li>
         <?php } ?>
-        <?php if ( $meta_obj->check_post_meta_exist('lot_area') && ($lot_area = $meta_obj->get_post_meta('lot_area')) && has_term(array('land', 'house-and-land'), 'property_type') ) { ?>
+        <?php if ( $meta_obj->check_post_meta_exist('lot_area') && ($lot_area = $meta_obj->get_post_meta('lot_area')) && has_term(array('land', 'house-and-land'), 'property_type')) { ?>
             <li class="d-flex align-items-center">
                 <div class="icon flex-shrink-0 d-flex align-items-center justify-content-center">
                     <i class="flaticon-expand"></i>

@@ -7,7 +7,7 @@ global $post;
 $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
 ?>
 <div class="property-detail-detail">
-    <h3 class="title"><?php esc_html_e('Details', 'homez'); ?></h3>
+    <h3 class="title"><?php esc_html_e('Specifications', 'homez'); ?></h3>
     <ul class="list list-detail d-flex flex-wrap">
         <?php if ( $meta_obj->check_post_meta_exist('property_id') && ($property_id = $meta_obj->get_post_meta('property_id')) ) { ?>
             <li class="d-flex align-items-center">
@@ -15,7 +15,7 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
                 <div class="value flex-grow-1"><?php echo trim($property_id); ?></div>
             </li>
         <?php } ?>
-        <?php if ( $meta_obj->check_post_meta_exist('lot_area') && ($lot_area = $meta_obj->get_post_meta('lot_area')) ) { ?>
+        <?php if ( $meta_obj->check_post_meta_exist('lot_area') && ($lot_area = $meta_obj->get_post_meta('lot_area')) && has_term(array('land', 'house-and-land'), 'property_type')) { ?>
             <li class="d-flex align-items-center">
                 <div class="text flex-shrink-0"><?php echo esc_html($meta_obj->get_post_meta_title( 'lot_area' )); ?>:</div>
                 <div class="value flex-grow-1"><?php echo trim($lot_area); ?> <?php echo wp_realestate_get_option('measurement_unit_area'); ?></div>
