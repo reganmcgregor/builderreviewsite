@@ -27,8 +27,17 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
 
                 homez_property_display_meta($post, 'baths', 'flaticon-shower', false, $meta_obj->get_post_meta_title( 'baths' ), true);
 
-                $suffix = wp_realestate_get_option('measurement_unit_area');
-                homez_property_display_meta($post, 'lot_area', 'flaticon-expand', false, $suffix, true);
+                if (has_term(array('land'), 'property_type')) {
+                    $suffix = wp_realestate_get_option('measurement_unit_area');
+                    homez_property_display_meta($post, 'lot_area', 'flaticon-expand', false, $suffix, true);
+                } elseif (has_term(array('house-designs', 'knockdown-rebuild'), 'property_type')) {
+                    $suffix = wp_realestate_get_option('measurement_unit_area');
+                    homez_property_display_meta($post, 'home_area', 'flaticon-ruler', false, $suffix, true);
+                } elseif (has_term(array('house-and-land'), 'property_type')) {
+                    $suffix = wp_realestate_get_option('measurement_unit_area');
+                    homez_property_display_meta($post, 'land_area', 'flaticon-expand', false, $suffix, true);
+                    homez_property_display_meta($post, 'home_area', 'flaticon-ruler', false, $suffix, true);
+                }
 
                 ?>
             </div>

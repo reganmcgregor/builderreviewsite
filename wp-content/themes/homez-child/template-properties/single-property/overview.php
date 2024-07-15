@@ -54,7 +54,18 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
                 </div>
             </li>
         <?php } ?>
-        <?php if ( $meta_obj->check_post_meta_exist('lot_area') && ($lot_area = $meta_obj->get_post_meta('lot_area')) ) { ?>
+        <?php if ( $meta_obj->check_custom_post_meta_exist('living-spaces') && ($livingspaces = $meta_obj->get_custom_post_meta('living-spaces')) && has_term(array('house-designs'), 'property_type')) { ?>
+            <li class="d-flex align-items-center">
+                <div class="icon flex-shrink-0 d-flex align-items-center justify-content-center">
+                    <i class="flaticon-house-1"></i>
+                </div>
+                <div class="details flex-grow-1">
+                    <div class="text"><?php echo esc_html($meta_obj->get_custom_post_meta_title( 'living-spaces' )); ?></div>
+                    <div class="value"><?php echo trim($livingspaces); ?></div>
+                </div>
+            </li>
+        <?php } ?>
+        <?php if ( $meta_obj->check_post_meta_exist('lot_area') && ($lot_area = $meta_obj->get_post_meta('lot_area')) && has_term(array('land', 'house-and-land'), 'property_type') ) { ?>
             <li class="d-flex align-items-center">
                 <div class="icon flex-shrink-0 d-flex align-items-center justify-content-center">
                     <i class="flaticon-expand"></i>
@@ -65,8 +76,7 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
                 </div>
             </li>
         <?php } ?>
-        <!-- Add Home Area (Theme Override) -->
-        <?php if ( $meta_obj->check_post_meta_exist('home_area') && ($lot_area = $meta_obj->get_post_meta('home_area')) ) { ?>
+        <?php if ( $meta_obj->check_post_meta_exist('home_area') && ($lot_area = $meta_obj->get_post_meta('home_area')) && has_term(array('house-designs', 'knockdown-rebuild', 'house-and-land'), 'property_type')) { ?>
             <li class="d-flex align-items-center">
                 <div class="icon flex-shrink-0 d-flex align-items-center justify-content-center">
                     <i class="flaticon-ruler"></i>
@@ -77,8 +87,6 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
                 </div>
             </li>
         <?php } ?>
-        
-       
         <?php if ( ($type = homez_property_display_type($post, false, false)) ) { ?>
             <li class="d-flex align-items-center">
                 <div class="icon flex-shrink-0 d-flex align-items-center justify-content-center">
