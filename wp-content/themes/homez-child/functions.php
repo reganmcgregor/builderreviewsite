@@ -35,6 +35,24 @@ function homez_property_display_type_label($post, $echo = true, $color = true) {
     }
 }
 
+function homez_property_display_type_name($post, $echo = true) {
+    $types = get_the_terms( $post->ID, 'property_type' );
+    ob_start();
+    if ( $types ) {
+        foreach ($types as $term) {
+            ?>
+                <a href="<?php echo esc_url(get_term_link($term)); ?>"><?php echo esc_html($term->name); ?></a>
+            <?php
+        }
+    }
+    $output = ob_get_clean();
+    if ( $echo ) {
+        echo trim($output);
+    } else {
+        return $output;
+    }
+}
+
 function homez_property_display_author_name($post, $prefix, $echo = true) {
 	$author_id = $post->post_author;
 	ob_start();
@@ -75,5 +93,26 @@ function homez_property_display_author_name($post, $prefix, $echo = true) {
     	echo trim($output);
     } else {
     	return $output;
+    }
+}
+
+function homez_property_display_agency_type_name($post, $echo = true) {
+    $author_id = $post->post_author;
+    $agency_id = WP_RealEstate_User::get_agency_by_user_id($author_id);
+
+    $types = get_the_terms( $agency_id, 'agency_category' );
+    ob_start();
+    if ( $types ) {
+        foreach ($types as $term) {
+            ?>
+                <a href="<?php echo esc_url(get_term_link($term)); ?>"><?php echo esc_html($term->name); ?></a>
+            <?php
+        }
+    }
+    $output = ob_get_clean();
+    if ( $echo ) {
+        echo trim($output);
+    } else {
+        return $output;
     }
 }

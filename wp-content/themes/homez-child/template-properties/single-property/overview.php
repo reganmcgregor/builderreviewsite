@@ -43,7 +43,7 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
                 </div>
             </li>
         <?php } ?>
-        <?php if ( $meta_obj->check_post_meta_exist('garages') && ($garages = $meta_obj->get_post_meta('garages')) && has_term(array('land', 'house-and-land'), 'property_type')) { ?>
+        <?php if ( $meta_obj->check_post_meta_exist('garages') && ($garages = $meta_obj->get_post_meta('garages')) && has_term(array('house-designs', 'land', 'house-and-land'), 'property_type')) { ?>
             <li class="d-flex align-items-center">
                 <div class="icon flex-shrink-0 d-flex align-items-center justify-content-center">
                     <i class="flaticon-garage"></i>

@@ -27,7 +27,7 @@ $meta_obj = WP_RealEstate_Property_Meta::get_instance($post->ID);
                 <div class="value flex-grow-1"><?php echo trim($home_area); ?> <?php echo wp_realestate_get_option('measurement_unit_area'); ?></div>
             </li>
         <?php } ?>
-        <?php if ( $meta_obj->check_post_meta_exist('lot_dimensions') && ($lot_dimensions = $meta_obj->get_post_meta('lot_dimensions')) ) { ?>
+        <?php if ( $meta_obj->check_post_meta_exist('lot_dimensions') && ($lot_dimensions = $meta_obj->get_post_meta('lot_dimensions')) && has_term(array('land', 'house-and-land'), 'property_type')) { ?>
             <li class="d-flex align-items-center">
                 <div class="text flex-shrink-0"><?php echo esc_html($meta_obj->get_post_meta_title( 'lot_dimensions' )); ?>:</div>
                 <div class="value flex-grow-1"><?php echo trim($lot_dimensions); ?></div>

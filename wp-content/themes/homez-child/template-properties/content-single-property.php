@@ -57,7 +57,7 @@ wp_enqueue_script('sticky-kit');
 					?>
 
 					<?php
-					if (homez_get_config('show_property_location', true)) {
+					if (homez_get_config('show_property_location', true) && !has_term(array('house-designs', 'knockdown-rebuild'), 'property_type')) {
 						echo WP_RealEstate_Template_Loader::get_template_part('single-property/location');
 					}
 					?>
@@ -98,10 +98,8 @@ wp_enqueue_script('sticky-kit');
 					}
 					?>
 
-
-
 					<?php
-					if (homez_get_config('show_property_mortgage-calculator', true)) {
+					if (homez_get_config('show_property_mortgage-calculator', true) && has_term(array('house-designs', 'knockdown-rebuild', 'land', 'house-and-land'), 'property_type')) {
 						echo WP_RealEstate_Template_Loader::get_template_part('single-property/mortgage-calculator');
 					}
 					?>
@@ -173,6 +171,12 @@ wp_enqueue_script('sticky-kit');
 			</div>
 		</div>
 	</div>
+	<?php
+	if (homez_get_config('show_property_related', true)) {
+		echo WP_RealEstate_Template_Loader::get_template_part('single-property/agency-related');
+	}
+	?>
+
 	<?php
 	if (homez_get_config('show_property_related', true)) {
 		echo WP_RealEstate_Template_Loader::get_template_part('single-property/related');
