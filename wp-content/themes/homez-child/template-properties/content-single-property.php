@@ -63,6 +63,12 @@ wp_enqueue_script('sticky-kit');
 					?>
 
 					<?php
+					if (homez_get_config('show_property_location', true) && has_term(array('house-designs', 'knockdown-rebuild'), 'property_type')) {
+						echo WP_RealEstate_Template_Loader::get_template_part('single-property/build-locations');
+					}
+					?>
+
+					<?php
 					if (homez_get_config('show_property_amenities', true)) {
 						echo WP_RealEstate_Template_Loader::get_template_part('single-property/amenities');
 					}
@@ -81,7 +87,7 @@ wp_enqueue_script('sticky-kit');
 					?>
 
 					<?php
-					if (homez_get_config('show_property_floor-plans', true)) {
+					if (homez_get_config('show_property_floor-plans', true) && has_term(array('house-designs', 'knockdown-rebuild', 'house-and-land'), 'property_type')) {
 						echo WP_RealEstate_Template_Loader::get_template_part('single-property/floor-plans');
 					}
 					?>
