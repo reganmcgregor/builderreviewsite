@@ -22,10 +22,10 @@
  *
  * @package WordPress
  * @subpackage Homez
- * @since Homez 1.0.16
+ * @since Homez 1.0.18
  */
 
-define( 'HOMEZ_THEME_VERSION', '1.0.16' );
+define( 'HOMEZ_THEME_VERSION', '1.0.18' );
 define( 'HOMEZ_DEMO_MODE', false );
 
 if ( ! isset( $content_width ) ) {
@@ -687,8 +687,8 @@ function homez_get_load_plugins() {
     );
 
 	$plugins[] = array(
-        'name'                  => esc_html__( 'SVG Support', 'homez' ),
-        'slug'                  => 'svg-support',
+        'name'                  => esc_html__( 'Easy SVG Support', 'homez' ),
+        'slug'                  => 'easy-svg',
         'required'              => false,
         'force_activation'      => false,
         'force_deactivation'    => false,
