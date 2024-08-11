@@ -1877,8 +1877,8 @@ class RevSlider7Output extends RevSliderFunctions {
 		}
 
 		echo RS_T."if (SR7.F.init) SR7.F.init(); // DOUBLE CALL NOT A PROBLEM, MANAGED IN INIT"."\n";
-		echo RS_T."document.addEventListener('DOMContentLoaded', function() {if (SR7.F.init) SR7.F.init();});"."\n";
-		echo RS_T."window.addEventListener('load', function() {if (SR7.F.init) SR7.F.init(); });"."\n";
+		echo RS_T."document.addEventListener('DOMContentLoaded', function() {if (SR7.F.init) SR7.F.init(); else SR7.shouldBeInited = true;});"."\n";
+		echo RS_T."window.addEventListener('load', function() {if (SR7.F.init) SR7.F.init(); else SR7.shouldBeInited = true; });"."\n";
 
 		if(!empty($SR_GLOBALS['collections']['trans'])){
 			echo RS_T.'SR7.E.transtable ??={};'."\n";

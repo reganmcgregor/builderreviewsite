@@ -13,7 +13,7 @@ class RevSliderFront extends RevSliderFrontGlobal {
 
 	public function __construct(){
 		parent::__construct();
-		$this->add_actions();
+		add_action('wp_enqueue_scripts', array($this, 'add_actions'));
 	}
 
 	/**
@@ -45,7 +45,30 @@ class RevSliderFront extends RevSliderFrontGlobal {
 	}
 	  
 	public function add_actions(){
-		add_action('wp_enqueue_scripts', array($this, 'add_scripts'));
+		global $SR_GLOBALS;
+
+		$global	 	= $this->get_global_settings();
+		$inc_global	= $this->_truefalse($this->get_val($global, 'allinclude', true));		
+		$inc_footer = $this->_truefalse($this->get_val($global, array('script', 'footer'), true));
+		$widget	 	= is_active_widget(false, false, 'rev-slider-widget', true);
+		
+		$load = false;
+		$load = apply_filters('revslider_include_libraries', $load);
+		$load = ($SR_GLOBALS['preview_mode'] === true) ? true : $load;
+		$load = ($inc_global === true) ? true : $load;
+		$load = (self::has_shortcode('rev_slider') === true || self::has_shortcode('sr7') === true) ? true : $load;
+		$load = ($widget !== false) ? true : $load;
+		
+		if($inc_global === false){
+			$output = new RevSliderOutput();
+			$output->set_add_to($this->get_val($global, 'includeids', ''));
+			$add_to = $output->check_add_to(true);
+			$load	= ($add_to === true) ? true : $load;
+		}
+		
+		if($load === false) return false;
+
+		$this->add_scripts();
 		add_action('wp_head', array($this, 'js_add_header_scripts'), 99);
 		add_action('wp_head', array($this, 'load_header_fonts'));
 		add_filter('style_loader_tag', array($this, 'add_html_to_style_tags'), 10, 2);
@@ -212,6 +235,9 @@ class RevSliderFront extends RevSliderFrontGlobal {
 	 * print in header
 	 **/
 	public function load_header_fonts(){
+		$global = $this->get_global_settings();
+		if($this->get_val($global, 'fontdownload', 'off') === 'disable') return;
+
 		echo '<link rel="preconnect" href="https://fonts.googleapis.com">'."\n";
 		echo '<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>'."\n";
 	}

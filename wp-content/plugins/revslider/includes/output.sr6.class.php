@@ -2257,7 +2257,7 @@ class RevSliderOutput extends RevSliderFunctions {
 		$svg		= $this->get_val($layer, 'svg', false);
 		
 		if($idle_class !== '') $class[] = $idle_class;
-		if($internal_class !== '') $class[] = $internal_class;
+		if($internal_class !== '') $class = array_merge($class, explode(' ', $internal_class));
 		
 		if($selectable !== 'default'){
 			if($this->_truefalse($selectable) == true) $class[] = 'rs-selectable';

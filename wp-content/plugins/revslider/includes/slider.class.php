@@ -1326,21 +1326,38 @@ class RevSliderSlider extends RevSliderFunctions {
 		$settings	= $this->json_decode_slashes($settings);
 		$title		= (empty($title)) ? $this->get_val($settings, 'title') : $title;
 		$alias		= (empty($alias)) ? $this->get_val($settings, 'alias') : $alias;
+		$exists		= $this->check_id_v7($slider_id);
+
+		if(!current_user_can('administrator') && apply_filters('revslider_restrict_role', true)){
+			if(isset($settings['codes']) && isset($settings['codes']['css'])) unset($settings['codes']['css']);
+			if(isset($settings['codes']) && isset($settings['codes']['js'])) unset($settings['codes']['js']);
+		}
 		
-		//if($this->check_alias($alias)){
-		//	$this->throw_error(__('A Slider with the given alias already exists', 'revslider'));
-		//}
-		
+		if($exists){
+			$t = $SR_GLOBALS['use_table_version'];
+			$SR_GLOBALS['use_table_version'] = 7;
+			$this->init_by_id($slider_id);
+			$SR_GLOBALS['use_table_version'] = $t;
+			
+			if(!current_user_can('administrator') && apply_filters('revslider_restrict_role', true)){
+				//check for js and css, add it to $params
+				$settings['codes'] = [
+					'css' => $this->get_param(['codes', 'css'], ''),
+					'js' => $this->get_param(['codes', 'js'], '')
+				];
+			}
+		}
+
 		//insert slider to database
 		$slider_data = array(
 			'title'		=> $title,
 			'alias'		=> $alias,
 			'params'	=> json_encode($settings),
-			'settings'	=> '', //json_encode($settings),
+			'settings'	=> json_encode(['version' => RS_REVISION], JSON_FORCE_OBJECT),
 			'type'		=> ''
 		);
-		
-		if(!$this->check_id_v7($slider_id)){ //create slider
+
+		if(!$exists){ //create slider
 			$slider_data['id'] = $slider_id;
 			$result		= $wpdb->insert($wpdb->prefix . RevSliderFront::TABLE_SLIDER . $v, $slider_data);
 			$slider_id	= ($result) ? $wpdb->insert_id : false;
@@ -3400,7 +3417,7 @@ class RevSliderSlider extends RevSliderFunctions {
 			$static_slide_id = $slide->get_static_slide_id($slider_id);
 			if(!empty($slide_ids) && !in_array($static_slide_id, $slide_ids, true)) $static_slide_id = 0;
 
-			if(intval($static_slide_id) > 0 && $SR_GLOBALS['serial'] <= 2){
+			if(intval($static_slide_id) > 0){
 				$static_slide = new RevSliderSlide();
 				$static_slide->init_by_static_id($static_slide_id);
 				if(!empty($static_slide)){
@@ -3442,7 +3459,8 @@ class RevSliderSlider extends RevSliderFunctions {
 				//$static_slide_id = (intval($static_slide_id) === 0) ? $slide->create_slide($slider_id, '', true) : $static_slide_id;
 			
 				$static_slide = false;
-				if(intval($static_slide_id) > 0 && $SR_GLOBALS['serial'] <= 2){
+				
+				if(intval($static_slide_id) > 0){
 					$static_slide = new RevSliderSlide();
 					$static_slide->init_by_static_id($static_slide_id);
 				}

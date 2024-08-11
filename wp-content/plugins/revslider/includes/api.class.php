@@ -809,6 +809,11 @@ class RevSliderApi extends RevSliderFunctions {
 					}
 				break;
 				case 'save_navigation': //also deletes if requested
+
+					if(!current_user_can('administrator') && apply_filters('revslider_restrict_role', true)){
+						$this->ajax_response_error(__('Function only available for administrators', 'revslider'));
+					}
+
 					$_nav = new RevSliderNavigation();
 					$navs = (array) $this->get_val($data, 'navs', array());
 					$delete_navs = (array) $this->get_val($data, 'delete', array());
