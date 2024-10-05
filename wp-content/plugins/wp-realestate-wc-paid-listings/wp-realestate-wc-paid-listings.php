@@ -3,7 +3,7 @@
  * Plugin Name: WP RealEstate - WooCommerce Paid Listings
  * Plugin URI: http://apusthemes.com/wp-realestate-wc-paid-listings/
  * Description: Add paid listing functionality via WooCommerce
- * Version: 2.2.6
+ * Version: 2.2.7
  * Author: Habq
  * Author URI: http://apusthemes.com
  * Requires at least: 3.8
@@ -45,7 +45,7 @@ if( !class_exists("WP_RealEstate_Wc_Paid_Listings") ) {
 		 */
 		public function setup_constants() {
 			
-			define( 'WP_REALESTATE_WC_PAID_LISTINGS_PLUGIN_VERSION', '2.2.6' );
+			define( 'WP_REALESTATE_WC_PAID_LISTINGS_PLUGIN_VERSION', '2.2.7' );
 
 			// Plugin Folder Path
 			if ( ! defined( 'WP_REALESTATE_WC_PAID_LISTINGS_PLUGIN_DIR' ) ) {

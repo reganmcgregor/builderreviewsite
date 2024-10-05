@@ -23,7 +23,7 @@ function wp_realestate_wc_paid_listings_register_package_product_type() {
 	    }
 
 	    public function is_sold_individually() {
-			return apply_filters( 'wp_realestate_wc_paid_listings_' . $this->product_type . '_is_sold_individually', true );
+			return apply_filters( 'wp_realestate_wc_paid_listings_property_package_is_sold_individually', true );
 		}
 
 		public function is_purchasable() {
@@ -57,7 +57,7 @@ function wp_realestate_wc_paid_listings_register_package_product_type() {
 			}
 			
 		    public function is_sold_individually() {
-				return apply_filters( 'wp_realestate_wc_paid_listings_' . $this->product_type . '_is_sold_individually', true );
+				return apply_filters( 'wp_realestate_wc_paid_listings_property_package_subscription_is_sold_individually', true );
 			}
 
 			public function is_purchasable() {
