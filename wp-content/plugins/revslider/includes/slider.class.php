@@ -1320,7 +1320,7 @@ class RevSliderSlider extends RevSliderFunctions {
 	}
 	
 	public function save_slider_v7($slider_id, $settings, $title, $alias){
-		global $wpdb;
+		global $wpdb, $SR_GLOBALS;
 
 		$v			= '7';
 		$settings	= $this->json_decode_slashes($settings);
@@ -2986,6 +2986,7 @@ class RevSliderSlider extends RevSliderFunctions {
 
 		$templates 			= $this->get_slides(false);
 		$templates 			= $this->assoc_to_array($templates);
+		if(empty($templates)) return array();
 		$metas				= $this->get_used_metas();
 		$post_data			= array();
 		$ignore_taxonomies	= apply_filters('revslider_slide_ignore_taxonomies', array('post_tag', 'translation_priority', 'language', 'post_translations'), $this);

@@ -136,6 +136,13 @@ class RevSlider7Output extends RevSliderFunctions {
 	public function set_revapi($revapi){
 		$this->revapi = $revapi;
 	}
+
+	/**
+	 * set the slider manually
+	 */
+	public function set_slider($slider){
+		$this->slider = apply_filters('revslider_set_slider', $slider, $this);
+	}
 	
 	/**
 	 * set slide data and layers

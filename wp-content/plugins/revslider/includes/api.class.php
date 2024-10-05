@@ -1105,7 +1105,9 @@ class RevSliderApi extends RevSliderFunctions {
 						}
 						
 						$slider->set_slides($_slides);
-						$output = new RevSliderOutput();
+						//set_preview_mode
+						$output = ($SR_GLOBALS['front_version'] === 6) ? new RevSliderOutput() : new RevSlider7Output();
+						//$output = new RevSliderOutput();
 						$output->set_preview_mode(true);
 						$slider->init_by_data($_slider);
 						
@@ -2121,6 +2123,7 @@ class RevSliderApi extends RevSliderFunctions {
 	 * @param mixed $data
 	 */
 	private function ajax_response($success, $message, $data = null){
+		http_response_code(200);
 
 		$response = array(
 			'success' => $success,
