@@ -22,10 +22,10 @@
  *
  * @package WordPress
  * @subpackage Homez
- * @since Homez 1.0.18
+ * @since Homez 1.0.20
  */
 
-define( 'HOMEZ_THEME_VERSION', '1.0.18' );
+define( 'HOMEZ_THEME_VERSION', '1.0.20' );
 define( 'HOMEZ_DEMO_MODE', false );
 
 if ( ! isset( $content_width ) ) {
