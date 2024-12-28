@@ -22,10 +22,10 @@
  *
  * @package WordPress
  * @subpackage Homez
- * @since Homez 1.0.20
+ * @since Homez 1.0.23
  */
 
-define( 'HOMEZ_THEME_VERSION', '1.0.20' );
+define( 'HOMEZ_THEME_VERSION', '1.0.23' );
 define( 'HOMEZ_DEMO_MODE', false );
 
 if ( ! isset( $content_width ) ) {
@@ -304,7 +304,8 @@ function homez_enqueue_scripts() {
 	wp_enqueue_script( 'perfect-scrollbar', get_template_directory_uri() . '/js/perfect-scrollbar.min.js', array( 'jquery' ), '1.5.0', true );
 	
 	if ( homez_get_config('keep_header') ) {
-		wp_enqueue_script( 'sticky', get_template_directory_uri() . '/js/sticky.min.js', array( 'jquery', 'elementor-waypoints' ), '4.0.1', true );
+		wp_enqueue_script( 'jquery-waypoints', get_template_directory_uri() . '/js/jquery.waypoints.min.js', array( 'jquery' ), '4.0.1', true );
+		wp_enqueue_script( 'sticky', get_template_directory_uri() . '/js/sticky.min.js', array( 'jquery', 'jquery-waypoints' ), '4.0.1', true );
 	}
 
 	// mobile menu script

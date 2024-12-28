@@ -79,10 +79,6 @@ class Homez_Elementor_User_Header_Notification extends Elementor\Widget_Base {
             [
                 'label' => esc_html__( 'Color Icon', 'homez' ),
                 'type' => Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Elementor\Core\Schemes\Color::get_type(),
-                    'value' => Elementor\Core\Schemes\Color::COLOR_1,
-                ],
                 'selectors' => [
                     // Stronger selector to avoid section style from overwriting
                     '{{WRAPPER}} .message-notification i' => 'color: {{VALUE}};',
@@ -95,10 +91,6 @@ class Homez_Elementor_User_Header_Notification extends Elementor\Widget_Base {
             [
                 'label' => esc_html__( 'Color Hover Icon', 'homez' ),
                 'type' => Elementor\Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Elementor\Core\Schemes\Color::get_type(),
-                    'value' => Elementor\Core\Schemes\Color::COLOR_1,
-                ],
                 'selectors' => [
                     // Stronger selector to avoid section style from overwriting
                     '{{WRAPPER}} .message-notification:hover i' => 'color: {{VALUE}};',
