@@ -1,4 +1,100 @@
 <div class="slider-revolution-update-list">
+	<h3 class="version-number">Version 6.7.23 (20th November 2024)</h3>
+	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>	
+	<ul>
+		<li>Potential issue with Parallax Modules caused by a logical error in the latest release (6.7.22)</li>
+		<li>Parallax background stays unaligned in Carousel on slides if on page load module is offseted</li>
+	</ul>
+	<h3 class="version-number">Version 6.7.22 (20th November 2024)</h3>
+	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>	
+	<ul>
+		<li>The checkFontLoaded function always timeouted because of extra quotes in the Font Family name</li>
+		<li>Parallax background stays unaligned in Carousel on slides switched while it was partially visible</li>
+		<li>Fluid Dynamic Layers and some other Addon Layers wont show up since version 6.7.21</li>
+		<li>Ajax Error due maximum line length breaks Template Library loading process</li>	
+		<li>Issues with resizing of image layers in the backend editor</li>
+		<li>Show on hover Navigation was not showing when the mouse was initially over the module</li>
+		<li>Modals not starting if layer action referencing on the alias, and the modal is not added as module to the page yet</li>
+		<li>Simulate Click Action not working on Global Layers</li>
+		<li>Group layers in slides preloaded as siblings were not resized correctly on action triggered frames</li>
+		<li>Slider not working on WordPress.com hosting because of false positive malware detection on Prepare Module Height inline JavaScript</li>
+	</ul>	
+	<h3 class="version-number">Version 6.7.21 (5th November 2024)</h3>
+	<div class="newfeature"><strong style="font-weight:700">New Features</strong></div>	
+	<ul>
+		<li>Introducing new Layer processing and preparing object structure for SR7 Backend</li>
+	</ul>
+	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>	
+	<ul>
+		<li>Panorama module displays blurry images on iOS X. AddOn version 6.7.4 requires core version 6.7.21 to resolve this.</li>
+		<li>Vertical carousel reverts to the original position when dragged over a long distance with an extended timer.</li>
+		<li>Carousel gets stuck in drag mode when dragged after clicking on a slide element.</li>
+		<li>Translations updated for the upcoming WordPress release to prevent a deprecation notice.</li>
+		<li>Images with foreign characters in the URL do not load when added to the homepage.</li>
+		<li>Slide direction-based animations do not work for rotations on x, y, and z axes.</li>
+		<li>WooCommerce "Add to Cart" meta URL was generated incorrectly.</li>
+		<li>Carousel slider does not function when opened as a modal.</li>
+		<li>Hover action on mobile fails when releasing outside the target element.</li>
+		<li>"Open Slider Modal" action breaks when linked to a non-existent slide.</li>
+		<li>Auto width and height calculations are incorrect for shapes with image backgrounds when image proportion is disabled and the ratio does not match the media ratio.</li>
+		<li>Cookie Usage Consent plugin breaks the slider by blocking code that links to Google Fonts.</li>
+		<li>Videos in the slider are mistakenly added to the SEO images list.</li>
+		<li>3D Parallax effect continues animating the background element even when background animation is disabled.</li>
+		<li>Removing all slides from navigation causes a JavaScript error when bullets are enabled.</li>
+		<li>Carousel set to "Justify" without slide background media creates an endless resize loop that breaks the module.</li>
+		<li>Slide order may be incorrect if the module layout is changed to "Scene."</li>
+		<li>Fullscreen Modules dont resize accurate any more. Layers are distorted.</li>
+		<li>Layers on scroll based timelines and on fixed menu modules are sometimes not clickable after initialisation</li>
+		<li>Slide direction based Out animated layers, which are not waiting on Slide end, reanimates on leaving the slide</li>
+		<li>Instagram Data Access token was not refreshed</li>
+	</ul>
+	<h3 class="version-number">Version 6.7.20 (30th September 2024)</h3>
+	<div class="newfeature"><strong style="font-weight:700">New Features</strong></div>	
+	<ul>
+		<li>Introducing the "Keep Media when Slide Unfocused" option for media layers, allowing media to continue playing when the carousel slide is no longer in focus.</li>
+	</ul>
+	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>	
+	<ul>
+		<li>The custom JavaScript API variable is not defined for modal modules.</li>
+		<li>Scroll-based timeline navigation not working in modal modules.</li>
+		<li>HTML5 videos are not playing on slides beyond the first, or if more than one video was added to the page.</li>
+		<li>A black flash is visible during advanced transitions since version 6.7.19.</li>
+		<li>The carousel freezes if a video auto-paused during a slide change.</li>
+		<li>Slow dragging carousels over 50% slide width are missaligned after transition</li>
+	</ul>
+	
+	<h3 class="version-number">Version 6.7.19 (24th September 2024)</h3>
+	<div class="newfeature"><strong style="font-weight:700">New Features</strong></div>	
+	<ul>
+		<li>Deep link for external called modals added : i.e. document.dispatchEvent(new CustomEvent('popup_modal', { detail: { slide: 2 } }));</li>
+		<li>Introduced new API method forcedPause() to pause slideshows and keep them from auto resuming when in viewport again until the resume() method is called.</li>
+		<li>Introduced new V7 option Media Ignores Scroll Blur. This will allow the media to keep playing even when the module stopped out of the view port.</li>
+	</ul>
+	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>	
+	<ul>
+		<li>Multiple videos on page break with JS errors</li>
+		<li>Willow filter on media looks different in SR6 and SR7</li>
+		<li>Wrapper class for module not added in SR7</li>
+		<li>Dynamic links defined by meta tags redirect to the dynamic source, rather than using the meta tag value directly</li>
+		<li>3D Layers with scroll may break full slider module since version 6.7.17</li>
+		<li>In some very very rare case migration failes if old datas are corrupt.</li>
+		<li>Restrict SVG upload to Administrators only to avoid Stored Cross-Site Scripting via SVG File uploads</li>
+		<li>Apply sanitize to SVG files to prevent Stored Cross-Site Scripting via SVG File Upload</li>
+		<li>Decrease module height also affected height in the fullscreen mode</li>
+		<li>Orientation change on mobile caused JavaScript error</li>
+		<li>Not proportional custom size image layers are resized not properly</li>
+		<li>HTML5 Video is always muted, can not be unmuted due the original controls</li>
+		<li>Gesture Zoom on mobile devices may not resize layers and modules</li>
+		<li>Mobile Vertical scroll jumps with fullheight modules when search url bar becomes hidden</li>
+		<li>Respect Module Aspect ratio is not working</li>
+		<li>Infinity Carousel glitching on auto rotation restart</li>
+		<li>Infinity Carousel randomly switching direction when slide duration is low</li>
+		<li>Slides hidden from nav caused JavaScript error in thumbs navigation</li>
+		<li>Pause on hover not working on carousel auto rotating sliders</li>
+		<li>Mouse wheel navigation skipped slide change when the page scrolled rapidly</li>
+		<li>Slide background was not showing if the appearance animation was set to No Transition</li>
+	</ul>
+
 	<h3 class="version-number">Version 6.7.18 (20th August 2024)</h3>
 	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>	
 	<ul>

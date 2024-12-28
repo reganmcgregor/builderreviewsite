@@ -130,7 +130,7 @@ class RevSliderFront extends RevSliderFrontGlobal {
 		$script .= "	SR7.E.plugin_url	= '". str_replace(array("\n", "\r"), '', RS_PLUGIN_URL) ."';" . "\n";
 		$script .= "	SR7.E.wp_plugin_url = '". str_replace(array("\n", "\r"), '', WP_PLUGIN_URL) . "/" ."';" . "\n";
 		$script .= "	SR7.E.revision		= '". RS_REVISION ."';" . "\n";
-		$script .= "	SR7.E.fontBaseUrl	= '". $this->modify_fonts_url('https://fonts.googleapis.com/css2?family=') ."';" . "\n";
+		$script .= "	SR7.E.fontBaseUrl	= '". ($this->get_val($global, 'fontdownload') === 'off' ? $this->modify_fonts_url('https://fonts.googleapis.com/css2?family=') : '') ."';" . "\n";
 		$script .= "	SR7.G.breakPoints 	= [".implode(',', $breakpoints)."];" . "\n";
 		$script .= "	SR7.E.modules 		= ['".implode("','", $modules)."'];" . "\n";
 		if(!empty($libs))	$script .= '	SR7.E.libs 			= [' . implode(',', $libs) . '];' . "\n";

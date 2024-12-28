@@ -198,32 +198,26 @@ class RevSliderApi extends RevSliderFunctions {
 				case 'activate_plugin':
 					$result	 = false;
 					$code	 = trim($this->get_val($data, 'code'));
-					$selling = $this->get_addition('selling');
 					$rs_license = new RevSliderLicense();
 					
 					if(!empty($code)){
 						$result = $rs_license->activate_plugin($code);
 					}else{
-						$error = ($selling === true) ? __('The License Key needs to be set!', 'revslider') : __('The Purchase Code needs to be set!', 'revslider');
-						$this->ajax_response_error($error);
+						$this->ajax_response_error(__('The License Key needs to be set!', 'revslider'));
 						exit;
 					}
 
 					if($result === true){
 						$this->ajax_response_success(__('Plugin successfully activated', 'revslider'));
 					}elseif($result === false){
-						$error = ($selling === true) ? __('License Key is invalid', 'revslider') : __('Purchase Code is invalid', 'revslider');
-						$this->ajax_response_error($error);
+						$this->ajax_response_error(__('License Key is invalid', 'revslider'));
 					}else{
 						if($result == 'exist'){
-							$error = ($selling === true) ? __('License Key already registered!', 'revslider') : __('Purchase Code already registered!', 'revslider');
-							$this->ajax_response_error($error);
+							$this->ajax_response_error(__('License Key already registered!', 'revslider'));
 						}elseif($result == 'banned'){
-							$error = ($selling === true) ? __('License Key was locked, please contact the ThemePunch support!', 'revslider') : __('Purchase Code was locked, please contact the ThemePunch support!', 'revslider');
-							$this->ajax_response_error($error);
+							$this->ajax_response_error(__('License Key was locked, please contact the ThemePunch support!', 'revslider'));
 						}
-						$error = ($selling === true) ? __('License Key could not be validated', 'revslider') : __('Purchase Code could not be validated', 'revslider');
-						$this->ajax_response_error($error);
+						$this->ajax_response_error(__('License Key could not be validated', 'revslider'));
 					}
 				break;
 				case 'deactivate_plugin':
@@ -1218,17 +1212,16 @@ class RevSliderApi extends RevSliderFunctions {
 					$this->ajax_response_data(array('system' => $system));
 				break;
 				case 'load_module':
-					$module = $this->get_val($data, 'module', array('all'));
-					$module_uid = $this->get_val($data, 'module_uid', false);
-					$module_slider_id = $this->get_val($data, 'module_id', false);
+					$module				 = $this->get_val($data, 'module', array('all'));
+					$module_uid			 = $this->get_val($data, 'module_uid', false);
+					$module_slider_id	 = $this->get_val($data, 'module_id', false);
 					$refresh_from_server = $this->get_val($data, 'refresh_from_server', false);
-					$get_static_slide = $this->_truefalse($this->get_val($data, 'static', false));
+					$get_static_slide	 = $this->_truefalse($this->get_val($data, 'static', false));
+					$page				 = $this->get_val($data, 'page', false);
 					
-					if($module_uid === false){
-						$module_uid = $module_slider_id;
-					}
+					if($module_uid === false) $module_uid = $module_slider_id;
 
-					$modules = $sr_admin->get_full_library($module, $module_uid, $refresh_from_server, $get_static_slide);
+					$modules = $sr_admin->get_full_library($module, $module_uid, $refresh_from_server, $get_static_slide, $page);
 					
 					$this->ajax_response_data(array('modules' => $modules));
 				break;
@@ -1513,6 +1506,10 @@ class RevSliderApi extends RevSliderFunctions {
 					}
 				break;
 				case 'upload_customlibrary_item':
+					if(!current_user_can('administrator') && apply_filters('revslider_restrict_role', true)){
+						$this->ajax_response_error(__('Function only available for administrators', 'revslider'));
+					}
+
 					$obj = new RevSliderObjectLibrary();
 					
 					$return = $obj->upload_custom_item($data);
@@ -1942,7 +1939,7 @@ class RevSliderApi extends RevSliderFunctions {
 		$data	= $this->get_data($data);
 		if($this->REST === true){
 			if(isset($data['slider'])){
-				if(intval($data['slider']) === 0){
+				if($this->_truefalse($this->get_val($data, 'alias', false)) === true){
 					$data['alias'] = $data['slider'];
 				}else{
 					$data['id'] = $data['slider'];
@@ -2008,7 +2005,7 @@ class RevSliderApi extends RevSliderFunctions {
 
 		if($this->REST === true){
 			if(isset($data['slider'])){
-				if(intval($data['slider']) === 0){
+				if($this->_truefalse($this->get_val($data, 'alias', false)) === true){
 					$data['alias'] = $data['slider'];
 				}else{
 					$data['id'] = 'slider-'.$data['slider'];
@@ -2137,7 +2134,6 @@ class RevSliderApi extends RevSliderFunctions {
 
 			$response = array_merge($response, $data);
 		}
-
 		if($this->is_rest_call()){
 			echo json_encode($response);
 			exit;

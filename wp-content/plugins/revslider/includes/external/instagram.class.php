@@ -41,13 +41,23 @@ class RevSliderInstagram extends RevSliderFunctions {
 	private $stream;
 
 	/**
-	 * Transient seconds
+	 * instagram data transient expiration time in seconds
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var int  $transient_sec Transient time in seconds
+	 * @var int  $transient_sec
 	 */
 	private $transient_sec;
+	
+	/**
+	 * instagram token transient expiration time
+	 * trigger token_refresh on expire
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var int  $transient_token_sec
+	 */
+	private $transient_token_sec;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -57,6 +67,7 @@ class RevSliderInstagram extends RevSliderFunctions {
 	 */
 	public function __construct($transient_sec = 86400){
 		$this->transient_sec = $transient_sec;
+		$this->transient_token_sec = 86400 * 30;
 	}
 
 	/**
@@ -71,6 +82,14 @@ class RevSliderInstagram extends RevSliderFunctions {
 	 */
 	public function setTransientSec($transient_sec){
 		$this->transient_sec = $transient_sec;
+	}
+
+	/**
+	 * @param int $transient_token_sec
+	 */
+	public function setTransientTokenSec($transient_token_sec)
+	{
+		$this->transient_token_sec = $transient_token_sec;
 	}
 
 	public function add_actions(){
@@ -143,6 +162,10 @@ class RevSliderInstagram extends RevSliderFunctions {
 			return;
 		}
 
+		// save token transient to trigger refresh on expire
+		$transient_token = $this->get_transient_name('token', $token);
+		set_transient($transient_token, $token, $this->transient_token_sec);
+
 		$slider->set_param(array('source', 'instagram', 'token_source'), 'account');
 		$slider->set_param(array('source', 'instagram', 'token'), $token);
 		$slider->set_param(array('source', 'instagram', 'connect_with'), $connectwith);
@@ -186,12 +209,41 @@ class RevSliderInstagram extends RevSliderFunctions {
 	/**
 	 * get grid transient name
 	 *
-	 * @param int $grid_id grid id
+	 * @param mixed  $id  transient id (grid id or string)
 	 * @param string $token
-	 * @param int $count
+	 * @param int    $count
 	 */
-	public function getTransientName($id, $token, $count){
+	public function get_transient_name($id, $token, $count = 0){
 		return self::TRANSIENT_PREFIX . $id . '_' . md5(json_encode($token . '_' . $count));
+	}
+
+	/**
+	 * refresh Instagram token if needed
+	 *
+	 * @param  string $token
+	 * @return string
+	 */
+	public function refresh_token($token){
+		if(empty($token)){
+			return $token;
+		}
+		
+		$transient_token = $this->get_transient_name('token', $token);
+		if($this->transient_token_sec > 0 && false !== ($data = get_transient($transient_token))){
+			return $token;
+		}
+
+		//$request contain new token, however old token expiry date also updated, so we could still use it
+		$request = $this->_callAPI(array(
+			'action' => 'refresh_token',
+			'token' => $token,
+		));
+		if(isset($request['data']['access_token'])){
+			set_transient($transient_token, $token, $this->transient_token_sec);
+			return $token;
+		}
+		
+		return '';
 	}
 
 	/**
@@ -201,7 +253,8 @@ class RevSliderInstagram extends RevSliderFunctions {
 	 * @return mixed
 	 */
 	public function get_user_profile($token){
-
+		$this->refresh_token($token);
+		
 		$transient_name = 'revslider_'. md5('instagram-profile-' . $token);
 		if($this->transient_sec > 0 && false !== ($data = get_transient($transient_name))){
 			return $data;
@@ -233,8 +286,9 @@ class RevSliderInstagram extends RevSliderFunctions {
 	 * @return mixed
 	 */
 	public function get_public_photos($slider_id, $token, $count, $orig_image = ''){
-
-		$transient_name = $this->getTransientName($slider_id, $token, $count);
+		$this->refresh_token($token);
+		
+		$transient_name = $this->get_transient_name($slider_id, $token, $count);
 		if($this->transient_sec > 0 && false !== ($data = get_transient($transient_name))){
 			$this->stream = $data;
 			return $this->stream;
