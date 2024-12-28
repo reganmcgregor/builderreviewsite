@@ -56,7 +56,7 @@ class WP_RealEstate_Price {
 					$price = $price*$rate_exchange_fee;
 				}
 			} else {
-				$symbol = wp_realestate_get_option('custom_symbol', '$');
+				$symbol = wp_realestate_get_option('custom_symbol', '');
 				if ( empty($symbol) ) {
 					$currency = wp_realestate_get_option('currency', 'USD');
 					$symbol = WP_RealEstate_Price::currency_symbol($currency);
@@ -64,7 +64,7 @@ class WP_RealEstate_Price {
 				$currency_position = wp_realestate_get_option('currency_position', 'before');
 			}
 		} else {
-			$symbol = wp_realestate_get_option('custom_symbol', '$');
+			$symbol = wp_realestate_get_option('custom_symbol', '');
 			if ( empty($symbol) ) {
 				$currency = wp_realestate_get_option('currency', 'USD');
 				$symbol = WP_RealEstate_Price::currency_symbol($currency);

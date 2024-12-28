@@ -103,7 +103,8 @@ class WP_RealEstate_CustomFieldHTML {
                     self::select( $prefix.'[show_in_submit_form][]', self::yes_no_opts(), esc_html__('Show in submit form', 'wp-realestate'), $show_in_submit_form_val );
                     self::select( $prefix.'[show_in_admin_edit][]', self::yes_no_opts(), esc_html__('Show in admin form', 'wp-realestate'), $show_in_admin_edit_val );
 
-                    self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                    //self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                    self::select( $prefix.'[required][]', self::yes_no_opts(), esc_html__('Required', 'wp-realestate'), $required_val, '', false, false );
 
                     // packages
                     $packages = self::get_packages();
@@ -162,7 +163,8 @@ class WP_RealEstate_CustomFieldHTML {
                 self::select( $prefix.'[show_in_submit_form][]', self::yes_no_opts(), esc_html__('Show in submit form', 'wp-realestate'), $show_in_submit_form_val );
                 self::select( $prefix.'[show_in_admin_edit][]', self::yes_no_opts(), esc_html__('Show in admin form', 'wp-realestate'), $show_in_admin_edit_val );
 
-                self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                // self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                self::select( $prefix.'[required][]', self::yes_no_opts(), esc_html__('Required', 'wp-realestate'), $required_val, '', false, false );
 
                 // self::checkbox( $prefix.'[show_in_submit_form][]', esc_html__('Show in submit form', 'wp-realestate'), $show_in_submit_form_val);
                 // self::checkbox( $prefix.'[show_in_admin_edit][]', esc_html__('Show in admin edit page', 'wp-realestate'), $show_in_admin_edit_val);
@@ -300,7 +302,8 @@ class WP_RealEstate_CustomFieldHTML {
                 self::select( $prefix.'[show_in_submit_form][]', self::yes_no_opts(), esc_html__('Show in submit form', 'wp-realestate'), $show_in_submit_form_val );
                 self::select( $prefix.'[show_in_admin_edit][]', self::yes_no_opts(), esc_html__('Show in admin form', 'wp-realestate'), $show_in_admin_edit_val );
 
-                self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                // self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                self::select( $prefix.'[required][]', self::yes_no_opts(), esc_html__('Required', 'wp-realestate'), $required_val, '', false, false );
 
                 // packages
                 $packages = self::get_packages();
@@ -358,7 +361,8 @@ class WP_RealEstate_CustomFieldHTML {
                 self::select( $prefix.'[show_in_submit_form][]', self::yes_no_opts(), esc_html__('Show in submit form', 'wp-realestate'), $show_in_submit_form_val );
                 self::select( $prefix.'[show_in_admin_edit][]', self::yes_no_opts(), esc_html__('Show in admin form', 'wp-realestate'), $show_in_admin_edit_val );
 
-                self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                // self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                self::select( $prefix.'[required][]', self::yes_no_opts(), esc_html__('Required', 'wp-realestate'), $required_val, '', false, false );
 
                 // packages
                 $packages = self::get_packages();
@@ -420,7 +424,8 @@ class WP_RealEstate_CustomFieldHTML {
                 self::select( $prefix.'[show_in_submit_form][]', self::yes_no_opts(), esc_html__('Show in submit form', 'wp-realestate'), $show_in_submit_form_val );
                 self::select( $prefix.'[show_in_admin_edit][]', self::yes_no_opts(), esc_html__('Show in admin form', 'wp-realestate'), $show_in_admin_edit_val );
 
-                self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                // self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                self::select( $prefix.'[required][]', self::yes_no_opts(), esc_html__('Required', 'wp-realestate'), $required_val, '', false, false );
 
                 // packages
                 $packages = self::get_packages();
@@ -483,7 +488,8 @@ class WP_RealEstate_CustomFieldHTML {
                 self::select( $prefix.'[show_in_submit_form][]', self::yes_no_opts(), esc_html__('Show in submit form', 'wp-realestate'), $show_in_submit_form_val );
                 self::select( $prefix.'[show_in_admin_edit][]', self::yes_no_opts(), esc_html__('Show in admin form', 'wp-realestate'), $show_in_admin_edit_val );
 
-                self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                // self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                self::select( $prefix.'[required][]', self::yes_no_opts(), esc_html__('Required', 'wp-realestate'), $required_val, '', false, false );
 
                 // packages
                 $packages = self::get_packages();
@@ -545,7 +551,8 @@ class WP_RealEstate_CustomFieldHTML {
                 self::select( $prefix.'[show_in_submit_form][]', self::yes_no_opts(), esc_html__('Show in submit form', 'wp-realestate'), $show_in_submit_form_val );
                 self::select( $prefix.'[show_in_admin_edit][]', self::yes_no_opts(), esc_html__('Show in admin form', 'wp-realestate'), $show_in_admin_edit_val );
 
-                self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                // self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                self::select( $prefix.'[required][]', self::yes_no_opts(), esc_html__('Required', 'wp-realestate'), $required_val, '', false, false );
 
                 // packages
                 $packages = self::get_packages();
@@ -605,7 +612,8 @@ class WP_RealEstate_CustomFieldHTML {
                 self::select( $prefix.'[show_in_submit_form][]', self::yes_no_opts(), esc_html__('Show in submit form', 'wp-realestate'), $show_in_submit_form_val );
                 self::select( $prefix.'[show_in_admin_edit][]', self::yes_no_opts(), esc_html__('Show in admin form', 'wp-realestate'), $show_in_admin_edit_val );
 
-                self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                // self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                self::select( $prefix.'[required][]', self::yes_no_opts(), esc_html__('Required', 'wp-realestate'), $required_val, '', false, false );
 
                 // packages
                 $packages = self::get_packages();
@@ -660,7 +668,8 @@ class WP_RealEstate_CustomFieldHTML {
                 self::select( $prefix.'[show_in_submit_form][]', self::yes_no_opts(), esc_html__('Show in submit form', 'wp-realestate'), $show_in_submit_form_val );
                 self::select( $prefix.'[show_in_admin_edit][]', self::yes_no_opts(), esc_html__('Show in admin form', 'wp-realestate'), $show_in_admin_edit_val );
 
-                self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                // self::checkbox( $prefix.'[required][]', esc_html__('Required', 'wp-realestate'), $required_val);
+                self::select( $prefix.'[required][]', self::yes_no_opts(), esc_html__('Required', 'wp-realestate'), $required_val, '', false, false );
 
                 // packages
                 $packages = self::get_packages();

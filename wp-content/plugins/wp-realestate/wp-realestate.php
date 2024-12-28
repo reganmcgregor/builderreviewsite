@@ -3,7 +3,7 @@
  * Plugin Name: WP RealEstate
  * Plugin URI: http://apusthemes.com/wp-realestate/
  * Description: The latest plugins Real Estate you want. Completely all features, easy customize and override layout, functions. Supported global payment, build market, single, list property, single agent...etc. All fields are defined dynamic, they will help you can build any kind of Real Estate website.
- * Version: 1.6.24
+ * Version: 1.6.25
  * Author: Habq
  * Author URI: http://apusthemes.com/
  * Requires at least: 3.8
@@ -48,7 +48,7 @@ if ( !class_exists("WP_RealEstate") ) {
 		 *
 		 */
 		public function setup_constants(){
-			define( 'WP_REALESTATE_PLUGIN_VERSION', '1.6.24' );
+			define( 'WP_REALESTATE_PLUGIN_VERSION', '1.6.25' );
 
 			define( 'WP_REALESTATE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			define( 'WP_REALESTATE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
